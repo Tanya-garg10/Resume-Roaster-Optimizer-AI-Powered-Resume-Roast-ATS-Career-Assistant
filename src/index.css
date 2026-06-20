@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+:root {
+  --bg-app: #FCFAF6;
+  --text-primary: #1c1917; /* stone-900 */
+  --bg-card: #ffffff;
+  --bg-card-hover: #fafaf9; /* stone-50 */
+  --border-color: rgba(220, 215, 210, 0.8);
+  --text-secondary: #78716c; /* stone-500 */
+  --text-strong: #0c0a09; /* stone-950 */
+  --bg-soft: #f5f5f4; /* stone-100 */
+  --bg-input: #ffffff;
+  --accent-light: #fff7ed; /* orange-50 */
+}
+
+.dark {
+  --bg-app: #0e0d0c;
+  --text-primary: #e7e5e4; /* stone-200 */
+  --bg-card: #181615;
+  --bg-card-hover: #23201e; 
+  --border-color: #2d2927;
+  --text-secondary: #a8a29e; /* stone-400 */
+  --text-strong: #ffffff;
+  --bg-soft: #23201e;
+  --bg-input: #1b1918;
+  --accent-light: #2c1a0e;
+}
+
+/* Dynamic CSS variable transitions */
+body, header, main, footer, button, input, textarea, select, div, h1, h2, h3, h4, p, span {
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+
+/* Base styles override */
+.dark body,
+.dark .min-h-screen,
+.dark .bg-\[\#FCFAF6\] {
+  background-color: var(--bg-app) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark header,
+.dark .bg-white {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+.dark .text-stone-950,
+.dark .text-stone-900,
+.dark .text-stone-850,
+.dark .text-stone-800,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--text-strong) !important;
+}
+
+.dark .text-stone-500,
+.dark .text-stone-600 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .text-stone-400 {
+  color: #78716c !important; /* stone-500 */
+}
+
+.dark .border-stone-200,
+.dark .border-stone-200\/80,
+.dark .border-stone-100 {
+  border-color: var(--border-color) !important;
+}
+
+.dark .bg-stone-50,
+.dark .bg-stone-50\/50,
+.dark .bg-\[\#FCFAF7\],
+.dark .bg-stone-100 {
+  background-color: var(--bg-soft) !important;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--bg-input) !important;
+  color: var(--text-strong) !important;
+  border-color: var(--border-color) !important;
+}
+
+.dark .bg-white\/80 {
+  background-color: var(--bg-card) !important;
+}
+
+.dark .bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, #0e0d0c, #141312, #1f1d1c) !important;
+}
+
+.dark .hover\:bg-stone-50:hover {
+  background-color: var(--bg-card-hover) !important;
+}
+
+.dark .hover\:bg-stone-100:hover,
+.dark .hover\:bg-stone-200:hover {
+  background-color: var(--bg-soft) !important;
+}
+
+/* Custom fade animations or scroll behaviors if needed */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+/* Custom print stylesheet */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Make sure background colors and fills are output correctly */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+
+  /* Force items to utilize full width on print canvas */
+  .print\:w-full {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Avoid unsightly visual splits or cuts through card components during pagination */
+  .border & div, blockquote, li, p, h1, h2, h3, h4 {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Setup clean standard margins on print */
+  @page {
+    margin: 1.6cm 1.4cm 1.6cm 1.4cm;
+  }
+
+  /* Clean up Markdown quotes to make them contrast perfectly on white paper background */
+  blockquote {
+    border-left: 4px solid #1c1917 !important;
+    background-color: #f5f5f4 !important;
+    color: #1c1917 !important;
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    border-radius: 0 0.75rem 0.75rem 0 !important;
+  }
+}
+
